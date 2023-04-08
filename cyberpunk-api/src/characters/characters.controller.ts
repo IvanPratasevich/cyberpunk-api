@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { CharactersService } from './characters.service';
 
 @Controller('characters')
@@ -8,5 +8,15 @@ export class CharactersController {
   @Get()
   getCharacters() {
     return this.charactersService.getCharacters();
+  }
+
+  @Get('name/:name')
+  getCharacter(@Param('name') name: string) {
+    return this.charactersService.getCharacter(name);
+  }
+
+  @Get('id/:id')
+  getCharacterById(@Param('id') id: string) {
+    return this.charactersService.getCharacterById(id);
   }
 }
