@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { database } from '../../database/database';
 import { ICharacter } from '../models/interfaces';
+import { chunkArr } from '../utils/utils';
 
 @Injectable()
 export class CharactersService {
@@ -22,4 +23,7 @@ export class CharactersService {
 
     return [findUser];
   };
+
+  getCharactersByPage = (page: string): ICharacter[] =>
+    chunkArr(database)[page];
 }

@@ -19,4 +19,9 @@ export class CharactersController {
   getCharacterById(@Param('id') id: string) {
     return this.charactersService.getCharacterById(id);
   }
+
+  @Get('page/:page')
+  getCharactersByPage(@Param('page') page: string) {
+    return this.charactersService.getCharactersByPage(page);
+  }
 }
