@@ -12,7 +12,7 @@ export class CharactersService {
       character.name.toLowerCase().includes(name.toLowerCase()),
     );
 
-  getCharacterById = (id: string): ICharacter[] => {
+  getCharacterById = (id: string): ICharacter => {
     const findUser: ICharacter = database.find(
       (character: ICharacter) => character.id === +id,
     );
@@ -21,7 +21,7 @@ export class CharactersService {
       throw new NotFoundException('Character not found!');
     }
 
-    return [findUser];
+    return findUser;
   };
 
   getCharactersByPage = (page: string): ICharacter[] =>
